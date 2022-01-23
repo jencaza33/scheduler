@@ -8,6 +8,7 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
+// -- this file formats each appointment space depending on status of the interview
 
 // -- mode constants
 const EMPTY = "EMPTY";
@@ -22,40 +23,40 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 // -- Appointment component
 export default function Appointment(props) {
-  
+
+  // -- SHOW if interview exists, EMPTY if no interview exists
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
   // -- save action
   function save(name, interviewer) {
-    if(!name || !interviewer) {
+    // -- if no name entered, or no interviewer selected, form cannot be saved
+    if (!name || !interviewer) {
       return;
     }
+    // -- after save, transition to status component, then submit info to API
     transition(SAVING);
     const interview = {
       student: name,
       interviewer
     };
     props.bookInterview(props.id, interview)
-    .then(() => {
-      transition(SHOW)
-    }).catch(() => transition(ERROR_SAVE, true));
-    };
-  
-  
+      .then(() => {
+        transition(SHOW)
+      }).catch(() => transition(ERROR_SAVE, true));
+  };
 
   // -- delete action
   function deleteFunc() {
+    // -- after delete, transition to status component for DELETING
     transition(DELETING, true);
     props.cancelInterview(props.id)
-    .then(() => {
-      transition(EMPTY)
-    }).catch(() => transition(ERROR_DELETE, true));
+      .then(() => {
+        // -- remove appointment and transition to EMPTY for blank appointment space
+        transition(EMPTY)
+      }).catch(() => transition(ERROR_DELETE, true));
   };
-
-
-
 
   return (
     <article className="appointment">
@@ -63,14 +64,14 @@ export default function Appointment(props) {
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
-      <Show
-        student={props.interview.student}
-        interviewer={props.interview.interviewer}
-        onDelete={() => transition(CONFIRM)}
-        onEdit={() => transition(EDIT)}
-      />
+        <Show
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
+        />
       )}
-      {mode === EDIT && ( <Form
+      {mode === EDIT && (<Form
         interviewers={props.interviewers}
         interviewer={props.interview.interviewer.id}
         student={props.interview.student}
@@ -78,9 +79,9 @@ export default function Appointment(props) {
         onSave={save}
       />
       )}
-      {mode === CREATE && <Form 
-        interviewers={props.interviewers} 
-        onCancel={() => back(EMPTY)} 
+      {mode === CREATE && <Form
+        interviewers={props.interviewers}
+        onCancel={() => back(EMPTY)}
         onSave={save}
       />}
       {mode === SAVING && <Status message={"Saving"} />}
@@ -97,5 +98,5 @@ export default function Appointment(props) {
         onClose={() => back()}
       />}
     </article>
-  ); 
+  );
 }
