@@ -54,7 +54,8 @@ While interviews are being created or deleted, the number of spots remaining as 
 - [Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
 - [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
 
-
+## DATABASE API
+Download the database API and follow README INSTRUCTIONS (https://github.com/jencaza33/scheduler-api)
 ## Setup
 
 Install dependencies with `npm install`.
