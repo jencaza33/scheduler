@@ -1,13 +1,13 @@
 import React from "react";
 import "components/Appointment/styles.scss"
-import Header from "./Header";
-import Show from "./Show";
-import Empty from "./Empty";
+import Header from "./Hdr";
+import Show from "./Shw";
+import Empty from "./mpty";
 import useVisualMode from "hooks/useVisualMode";
-import Form from "./Form";
-import Status from "./Status";
-import Confirm from "./Confirm";
-import Error from "./Error";
+import Form from "./Frm";
+import Status from "./Stts";
+import Confirm from "./Cnfrm";
+import Error from "./Rror";
 // -- this file formats each appointment space depending on status of the interview
 
 // -- mode constants
