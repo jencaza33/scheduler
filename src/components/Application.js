@@ -1,6 +1,6 @@
 import React from "react";
 import DayList from "./DayList";
-import Appointment from "./appointment";
+import Appointment from "./Apt";
 import useApplicationData from "hooks/useApplicationData";
 import "components/Application.scss";
 import {
