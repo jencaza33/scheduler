@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "components/appointment/Frm";
+import Form from "components/appointment/Form";
 import { render, cleanup } from "@testing-library/react";
 import { fireEvent } from "@testing-library/react";
 
