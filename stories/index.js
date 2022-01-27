@@ -11,14 +11,14 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList"
-import Appointment from "components/Apt/index";
-import Header from "components/Apt/Header";
-import Empty from "components/Apt/Empty";
-import Show from "components/Apt/Show";
-import Confirm from "components/Apt/Confirm";
-import Status from "components/Apt/Status";
-import Error from "components/Apt/Error";
-import Form from "components/Apt/Form";
+import Appointment from "components/Appointment/index";
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
+import Show from "components/Appointment/Show";
+import Confirm from "components/Appointment/Confirm";
+import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
+import Form from "components/Appointment/Form";
 
 storiesOf("Button", module)
   .addParameters({
